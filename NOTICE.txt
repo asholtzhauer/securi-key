@@ -4,7 +4,7 @@ http://code.google.com/p/securi-key/
 
 ----------------------------------------
 
-This is a very simple module (currently) that is designed to help prevent privilege escalations (or de-escalations).
+This is a very simple Linux module (currently) that is designed to help prevent privilege escalations (or de-escalations).
 
 Once the module is installed, it will intercept the system call table and swap out three system calls: setuid, setresuid, and kill with custom versions of these system calls. The custom version first performs a check of a file before executing the system call. If the check fails, the process is killed before the system call is executed. Otherwise, the system call is permitted to be executed.
 
