@@ -1,0 +1,13 @@
+Securi-Key by Andrew Holtzhauer
+
+http://code.google.com/p/securi-key/
+
+----------------------------------------
+
+This is a very simple module (currently) that is designed to help prevent privilege escalations (or de-escalations).
+
+Once the module is installed, it will intercept the system call table and swap out three system calls: setuid, setresuid, and kill with custom versions of these system calls. The custom version first performs a check of a file before executing the system call. If the check fails, the process is killed before the system call is executed. Otherwise, the system call is permitted to be executed.
+
+Check out the project wiki for more detailed info on how to use this module, and also its limitations.
+
+NOTE: I take no responsibility for this module somehow damaging your kernel or any security breaches. Use this module at your own risk, it's not infallible or an end-all security measure. 
