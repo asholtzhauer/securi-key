@@ -21,7 +21,6 @@ unsigned long *sys_call_table;
 
 asmlinkage long (*original_sys_setuid) (uid_t uid);
 asmlinkage long (*original_sys_setresuid) (uid_t ruid, uid_t euid, uid_t suid);
-asmlinkage long (*original_sys_delete_module)(const char __user *name_user, unsigned int flags);
 asmlinkage long (*original_sys_kill)(int pid, int sig);
 
 static void disable_page_protection(void){
@@ -83,16 +82,6 @@ int keychecker(void){
 	}
 	
 	return 1;
-}
-
-asmlinkage long del_mod(const char __user *name_user, unsigned int flags){
-	int keycheck = keychecker();
-	
-	if(keycheck==0){
-		printk("Key not found! Unable to remove module!\n");
-		return 0;
-	}
-	return original_sys_delete_module(name_user, flags);
 }
 
 asmlinkage long set_uid_protect(uid_t uid){
