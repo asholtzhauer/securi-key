@@ -58,7 +58,7 @@ int keychecker(void){
 	
 	f = filp_open("/home/key.keyfile", O_RDONLY, 0); //change directory here to find your keyfile
 	if(f == NULL){
-		printk("Key file not found!!\n");
+		//printk("Key file not found!!\n");
 		my_kill(pid,SIGINT);
 		return 0;
 	}
